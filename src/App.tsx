@@ -28,6 +28,8 @@ export const App: React.FC = () => {
 
   const filteredTodos = getVisibleTodos(todos, selectedFilterType);
 
+  const activeTodosCount = todos.filter(todo => !todo.completed).length;
+
   useEffect(() => {
     getTodos()
       .then(setTodos)
@@ -46,11 +48,11 @@ export const App: React.FC = () => {
         <TodoHeader />
         {!!todos.length && (
           <>
-            <TodoList todos={todos} />
+            <TodoList todos={filteredTodos} />
             <TodoFooter
               selectedFilterType={selectedFilterType}
               onSelectedFilterType={setSelectedFilterType}
-              todos={filteredTodos}
+              activeTodosCount={activeTodosCount}
             />
           </>
         )}

@@ -1,24 +1,23 @@
 import { FilterTypes } from '../types/FilterTypes';
-import { Todo } from '../types/Todo';
 import cn from 'classnames';
 
 interface Props {
   selectedFilterType: FilterTypes;
   onSelectedFilterType: (type: FilterTypes) => void;
-  todos: Todo[];
+  activeTodosCount: number;
 }
 
 export const TodoFooter: React.FC<Props> = ({
   selectedFilterType,
   onSelectedFilterType,
-  todos,
+  activeTodosCount,
 }) => {
   return (
     <footer className="todoapp__footer" data-cy="Footer">
       <span className="todo-count" data-cy="TodosCounter">
-        {todos.length === 1
-          ? `${todos.length} item left`
-          : `${todos.length} items left`}
+        {activeTodosCount === 1
+          ? `${activeTodosCount} item left`
+          : `${activeTodosCount} items left`}
       </span>
 
       {/* Active link should have the 'selected' class */}
