@@ -36,10 +36,6 @@ export const App: React.FC = () => {
       .catch(() => handleError(setErrorMessage, ErrorMessages.LOAD_FAIL));
   }, []);
 
-  if (!USER_ID) {
-    return <UserWarning />;
-  }
-
   return (
     <div className="todoapp">
       <h1 className="todoapp__title">todos</h1>
