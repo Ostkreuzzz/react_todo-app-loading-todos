@@ -25,14 +25,15 @@ export const App: React.FC = () => {
   );
 
   const filteredTodos = getVisibleTodos(todos, selectedFilterType);
-
   const activeTodosCount = todos.filter(todo => !todo.completed).length;
 
-  useEffect(() => {
+  function handleUpload() {
     getTodos()
       .then(setTodos)
       .catch(() => handleError(setErrorMessage, ErrorMessages.LOAD_FAIL));
-  }, []);
+  }
+
+  useEffect(handleUpload, []);
 
   return (
     <div className="todoapp">

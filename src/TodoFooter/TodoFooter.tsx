@@ -7,6 +7,8 @@ interface Props {
   activeTodosCount: number;
 }
 
+const oneItem = '1 item left';
+
 export const TodoFooter: React.FC<Props> = ({
   selectedFilterType,
   onSelectedFilterType,
@@ -15,12 +17,9 @@ export const TodoFooter: React.FC<Props> = ({
   return (
     <footer className="todoapp__footer" data-cy="Footer">
       <span className="todo-count" data-cy="TodosCounter">
-        {activeTodosCount === 1
-          ? `${activeTodosCount} item left`
-          : `${activeTodosCount} items left`}
+        {activeTodosCount === 1 ? oneItem : `${activeTodosCount} items left`}
       </span>
 
-      {/* Active link should have the 'selected' class */}
       <nav className="filter" data-cy="Filter">
         {Object.values(FilterTypes).map(value => (
           <a
@@ -37,7 +36,6 @@ export const TodoFooter: React.FC<Props> = ({
         ))}
       </nav>
 
-      {/* this button should be disabled if there are no completed todos */}
       <button
         type="button"
         className="todoapp__clear-completed"
