@@ -25,14 +25,14 @@ export const TodoFooter: React.FC<Props> = ({
         {Object.values(FilterTypes).map(value => (
           <a
             key={value}
-            href={value === 'All' ? `#/` : `#/${value}`}
+            href={value === FilterTypes.ALL ? `#/` : `#/${value.toLowerCase()}`}
             className={cn('filter__link', {
-              selected: selectedFilterType === `${value}`,
+              selected: selectedFilterType === value,
             })}
-            data-cy="FilterLinkAll"
+            data-cy={`FilterLink${value}`}
             onClick={() => onSelectedFilterType(value)}
           >
-            All
+            {value}
           </a>
         ))}
       </nav>
